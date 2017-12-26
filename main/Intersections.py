@@ -24,7 +24,7 @@ class Intersections():
         elif (self.type == SEQIntersection):
             return self.seq_intersect(list_of_input_lists)
         elif (self.type == MAXIntersection):
-            pass
+            return self.max_intersect(list_of_input_lists)
 
     def binary_intersect(self,list_of_input_lists, verbose = False):
 
@@ -161,3 +161,43 @@ class Intersections():
                 eliminator = getEliminator(listsAreSortedWRTLength[0])
                 kingListIndex = 0
             loil = listsAreSortedWRTLength
+
+
+    def max_intersect(self,list_of_input_lists):
+
+        def getEliminator(lst):
+
+            if(len(lst)>0):
+                return lst.pop(0)
+            else:
+                return None
+
+        lengthsorted = sorted(list_of_input_lists, key=len)
+        intersectedArray = []
+
+
+        eliminatorArrayLength = len(lengthsorted[0])
+        x = getEliminator(lengthsorted[0])
+        startat = 1
+
+        while(x):
+            for i in range(startat,len(lengthsorted)):
+                print startat, x , eliminatorArrayLength
+
+                if(len(lengthsorted[i])==0):
+                    return intersectedArray
+                y = golomb_search(lengthsorted[i],x,int(len(lengthsorted[i])/eliminatorArrayLength))
+                if(lengthsorted[i][y]>x):
+                    x = getEliminator(lengthsorted[0])
+                    if(lengthsorted[i][y]>x):
+                        startat=0
+                        x = lengthsorted[i][y]
+                    else:
+                        startat=1
+
+                    break
+                elif(i == len(lengthsorted)-1):
+                    intersectedArray.append(x)
+                    x = getEliminator(lengthsorted[0])
+                    startat=1
+        return intersectedArray
