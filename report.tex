@@ -106,59 +106,49 @@ emphstyle={\color{self}\slshape},
 
 \section{INTRODUCTION}
 
- A conjunctive query q is equivalent to a
-|q|-way intersection over ordered sets of integers, where each set represents the documents containing
-one of the terms, and each integer in each set is an ordinal document identifier. As is the
-case with many computing applications, there is tension between the way in which the data is represented,
-and the ways in which it is to be manipulated. 
-Our purpose in this paper is to explore these
-tradeoffs, by investigating intersection techniques that make use of both uncompressed "integer" representations.We also propose a simple hybrid method that provides both compact storage, and also faster intersection computations for conjunctive
-querying than is possible even with uncompressed representations.
+A conjunctive query q is equivalent to a |q|-way intersection which uses ordered sets of integers, where each set represents the documents containing one of the terms, and each integer in each set is an ordinal document identifier. Therefore, there is tension between the way in which the data is represented, and the ways in which it is to be manipulated. In this paper, this tension tradeoff is explored by investigating different intersection techniques. Also, author of this paper proposes a new simple hybrid method to make intersection computation faster.
 
 \section{ALGORITHMS FOR EFFICIENT F-SEARCH}
-Binary search over n2 elements requires 1+log n2 comparisons, and if set T is stored as a sorted array of explicit values (SAEV format), then binary search can be used to underpin the F-SEARCH operations required in Algorithm 1. In particular, binary search is the optimal approach when |S| = 1.  
-\linebreak
+\paragraph{}
+To intersect two or more lists , we need to search the items in other lists. Also, finger search (F-Search) step is the an important part of an intersection process as computationally.  In this part , we will discover different type of f-search algorithms.
+\paragraph{}
+Although binary search is not so efficient search algorithm, it is used in other search algorithms. That's why it is needed to be mentioned here with an example. 
+To examplify binary search, let's think about two ordered sets S and T , with |S| = s  and  |T| = t, and $s \leq t$ . Binary search over t elements requires $1+\log t$ comparisons. In particular, binary search is the optimal approach when s = 1.
 
-There are also other searching methods that can be applied to SAEV representations,
-including linear search, interpolation search, Fibonacci search, exponential search (also referred to as galloping search by some authors), and Golomb search [Hwang and Lin 1972]. The desirable characteristic shared by these alternatives is that the search cost grows as a function of the distance traversed, rather than the size of the array. For example, linear search requires O(d) time to move the finger by d items; and as is described shortly, exponential search requires O(log d) time [Bentley and Yao 1976].
-\linebreak
+\paragraph{}
+There are also other searching methods linear search, interpolation search, Fibonacci search, exponential search and Golomb search. The desirable characteristic shared by these alternatives is that the search cost grows as a function of the distance traversed, rather than the size of the array. For example, linear search requires O(d) time to move the finger by d items; exponential search requires $O(\log d)$ time.
 
-In situations when 1 ≪ n1 ≪ n2, use of exponential search in the F-SEARCH implementation
-is of considerable benefit. In an exponential search, probes into T are made at exponentially increasing rank distance from the current location, until a value greater than the search key is encountered. A binary search is then carried out within the identified subrange, with this “halving” phase having the same cost as the “doubling” phase that preceded it. In this approach each F-SEARCH call requires 1 + 2⌊log d⌋ comparisons, where d is the difference between the rank of the finger’s previous position and the new rank of the finger pointer. Over n1 calls for which Pn1 i=1 di ≤ n2, the convex nature of the log function means that at most O(n1 + n1 log(n2/n1)) comparisons are required. Note that
-this approach has the same worst case asymptotic cost as using binary search when n1 is O(1), and has the same worst case asymptotic cost as linear search when n2/n1 is O(1).
-\linebreak
+\paragraph{}
+In situations when $1 \ll  n_{1} \ll  n_{2} $, use of exponential search is considerable benefit. In an exponential search, probes into T are made at exponentially increasing rank distance from the current location, until a value greater than the search key is encountered. A binary search is then carried out within the identified subrange, with this "halving" phase having the same cost as the "doubling" phase that preceded it.  In this approach each F-SEARCH call requires $1+2* \log d$ comparisons, where d is the difference between the rank of the finger's previous position and the new rank of the finger pointer. 
 
-The F-SEARCH algorithm can also be based on Golomb searching, in a mechanism described by Hwang and Lin [1972]. Algorithm 2 shows an implementation of this technique. Search proceeds in a manner somewhat similar to exponential F-SEARCH, but with a fixed forwards step of b items used at each iteration. Once overshoot has been achieved, a binary search takes place over the (at most) b items that have been identified. When searching
-through a set of size n2 for the elements of a set of size n1, the correct value for the step b is 0.69(n2/n1), with a total search cost that is again proportional to O(n1 + n1 log(n2/n1)) [Gallager and van Voorhis 1975].
+\paragraph{}
+The search algorithm can also be based on Golomb searching, in a mechanism described by Hwang and Lin [1972]. Search proceeds in a manner somewhat similar to exponential search, but with a fixed forwards step of b items used at each iteration. Once overshoot has been achieved, a binary search takes place over the (at most) b items that have been identified. When searching through a set of size $n_{2}$ for the elements of a set of size $n_{1}$, the correct value for the step b is 0.69(n2/n1), with a total search cost that is again proportional to O($n_{1}$ + $n_{1}$ $\log$($n_{2}$/$n_{1}$)).
 
+Golomb and binary search are implemented in python. It can be seen here.
 
 \section{Intersection Methods}
 
 \subsection{Binary Intersection of Ordered Sets}
-Algorithm 1 describes a more complex but also more efficient intersection algorithm, in which each element of the smaller set, S, is tested against the larger set, T , and retained if it is present [Hwang and Lin 1972]. The search retains state as it proceeds, with the eliminator element, x, stepped through the elements of S; and the F SEARCH (finger search) operation used in T to leapfrog over whole subsequences, pausing only at one corresponding value in T for each item in S. An auxiliary operation, FIRST, is used to establish an initial state in S; and T is implicitly assumed to have also been initialized, so that the first F-SEARCH starts from its least item.
+In binary Intersection of ordered sets, we intersect two lists one by one. Progressively,
+each element of the smaller set, S, is tested against the larger set, T , and retained if it is present. The search retains state as it proceeds, with the eliminator element, x, stepped through the elements of S; and the F SEARCH (finger search) operation used in T to leapfrog over whole subsequences, pausing only at one corresponding value in T for each item in S. 
 
 
 \subsection{Small versus Small}
 
-When more than two sets are being intersected, the simplest approach is to iteratively apply the standard two-set intersection method using as a sequence of pairwise operations. Algorithm 3 shows this small versus small (svs) approach. The smallest set is identified, and then that set is intersected with each of the others, in increasing order of size. The candidate set is never larger than S1 was initially, so the worst-case cost of this approach using a SAEV data representation using an F-SEARCH that takes O(log d) time to process a jump of length d is given by X |q| i=2 n1 log ni n1 ≤ n1(|q| − 1)log n|q| n1, where it is assumed that the sets are ordered by size, with n1 ≤ n2 ≤ · ·· ≤ n|q| The svs method is simple and effective, and benefits from the spatial locality inherent from
-processing the sets two at a time. Even so, each different F-SEARCH implementation gives rise to a different svs computation.
+When more than two sets are being intersected, the simplest approach is to iteratively apply the standard two-set intersection method using as a sequence of pairwise operations.small versus small (svs) approach is based on this mentality. Progressively, the smallest set is identified, and then that set is intersected with each of the others, in increasing order of size. The svs method is simple and effective, and benefits from the spatial locality inherent from processing the sets two at a time. Even so, each different F-SEARCH implementation gives rise to a different svs computation.
 
 \subsection{Adaptive Holistic Intersection}
-The alternative to the svs approach is to combine all of the sets using a single concerted sweep through them all. The resultant holistic algorithms offer the possibility of being adaptive to the particular data arrangement present, and can potentially outperform the svs approaches. Still working with the SAEV representation, the simplest holistic approach is to treat each item in the smallest set as an eliminator, and search for it in each of the remaining sets. Conceptually, this method is identical to an interleaved version of svs. Other adaptive approaches have been proposed which primarily differ in the way that the eliminators are selected at each iteration. 
+The alternative to the svs approach is to combine all of the sets using a single concerted sweep through them all. The resultant holistic algorithms offer the possibility of being adaptive to the particular data arrangement present, and can potentially outperform the svs approaches. The simplest holistic approach is to treat each item in the smallest set as an eliminator, and search for it in each of the remaining sets. Conceptually, this method is identical to an interleaved version of svs.
 
-In adp, the sets are initially monotonically increasing in size.
-At each iteration, the eliminator is the next remaining item from the set with the fewest remaining elements. If a mismatch occurs before all |q| sets have been examined, the sets are reordered based on the number of unexamined items remaining in each set, and the successor from the smallest remaining subset becomes the new eliminator. This approach reduces the number of item-to-item comparisons expected to be required, but at the possibly non-trivial cost of reordering the |q| lists at each iteration of the main loop.
+In adaptive holistic intersection (adp), the sets are initially monotonically increasing in size. At each iteration, the eliminator is the next remaining item from the set with the fewest remaining elements. If a mismatch occurs before all |q| sets have been examined, the sets are reordered based on the number of unexamined items remaining in each set, and the successor from the smallest remaining subset becomes the new eliminator. This approach reduces the number of item-to-item comparisons expected to be required, but at the possibly non-trivial cost of reordering the |q| lists at each iteration of the main loop.
 
 \subsection{Sequential Holistic Intersection}
 
-Their sequential algorithm, denoted here
-as seq, uses as the next eliminator the element that caused the previous eliminator to be discarded, and continues the strict rotation among the sets from that point. Only when an eliminator value is found in all the sets – and hence is part of the intersection’s output – is a new eliminator chosen from the smallest set. This approach has the advantage that the
-sets do not need to be reordered, while still allowing all of the sets to provide eliminators. However, this method suffers from a practical disadvantage: more F-SEARCH operations are likely to accrue when the eliminator is drawn from a populous set than when it is drawn
-from one of the sparse sets in the intersection.
+In sequential holistic intersection (seq) , uses as the next eliminator the element that caused the previous eliminator to be discarded, and continues the strict rotation among the sets from that point. Only when an eliminator value is found in all the sets – and hence is part of the intersection's output – is a new eliminator chosen from the smallest set. This approach has the advantage that the sets do not need to be reordered, while still allowing all of the sets to provide eliminators. However, this method suffers from a practical disadvantage: more F-SEARCH operations are likely to accrue when the eliminator is drawn from a populous set than when it is drawn from one of the sparse sets in the intersection.
 
 \subsection{Max Successor Intersection}
 
-Holistic methods may have a memory access pattern that is less localized than do svs methods, because all of the sets are processed concurrently. To ameliorate this risk, we propose a further alternative, described by Algorithm 4. The eliminator is initially drawn from the smallest set. When a mismatch occurs, the next eliminator is the larger of the mismatched value and the successor from the smallest set. Processing starts in S2 if the eliminator is again taken from S1, otherwise processing begins in S1. The intuition behind this approach is two-fold. The first is that, while it is true that in the absence of other information, the best eliminator will arise in the smallest set, the likelihood of another set becoming significantly smaller than S1 during processing is small. The second intuition is that, having discovered a bigger than anticipated jump in one of the sets, that value should naturally be tested against the first set, to see if additional items can be discarded.
+Holistic methods may have a memory access pattern that is less localized than do svs methods, because all of the sets are processed concurrently. To ameliorate this risk, we propose a further alternative. The eliminator is initially drawn from the smallest set. When a mismatch occurs, the next eliminator is the larger of the mismatched value and the successor from the smallest set. Processing starts in $S_{2}$ if the eliminator is again taken from $S_{1}$, otherwise processing begins in $S_{1}$. The intuition behind this approach is two-fold. The first is that, while it is true that in the absence of other information, the best eliminator will arise in the smallest set, the likelihood of another set becoming significantly smaller than $S_{1}$ during processing is small. The second intuition is that, having discovered a bigger than anticipated jump in one of the sets, that value should naturally be tested against the first set, to see if additional items can be discarded.
 
 \newpage
 \section{SOURCE CODE}
