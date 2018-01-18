@@ -71,7 +71,7 @@ def main(args=None):
     plt.plot(lengthOfQuery, max_time, label="max_time")
     plt.legend()
     # print max_time
-    plt.show()
+    plt.savefig("result.png")
 
 if __name__ == "__main__":
     main()
