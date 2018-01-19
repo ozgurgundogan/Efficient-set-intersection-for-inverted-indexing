@@ -1,4 +1,11 @@
+
+
 def linearSearch(lst, target):
+    '''
+    it goes find an exact match or bigger match.
+    if it finds exact match return True and restoflist
+    if it finds bigger match return False and restoflist
+    '''
     while (len(lst) > 0):
         if (lst[0] > target):
             return False, lst

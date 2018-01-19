@@ -22,7 +22,8 @@ def load_data(start, end):
     pointer = start
     while pointer <= end:
         postings.seek(pointer, 0)
-        ret.append(unpack('<i', postings.read(4)))
+        lll = unpack('<i', postings.read(4))
+        ret.append(lll[0])
         pointer += 8
 
     return ret

@@ -23,20 +23,34 @@ class Intersections():
         elif (self.type == MAXIntersection):
             return self.max_intersect(list_of_input_lists)
 
-    def binary_intersect(self, list_of_input_lists, verbose=False):
+    def binary_intersect(self, list_of_input_lists, sorrt=True ,verbose=False):
 
         assert len(list_of_input_lists) == 2
 
-        listsAreSortedWRTLength = sorted(list_of_input_lists, key=len)
+        if(sorrt):
+            # sort list wrt its length
+            listsAreSortedWRTLength = sorted(list_of_input_lists, key=len)
+        else:
+            listsAreSortedWRTLength = list_of_input_lists
+
         intersectedArray = []
 
+        # split short and long list
         shortList, longList = listsAreSortedWRTLength[0], \
                               listsAreSortedWRTLength[1]
+
+
         for x in shortList:
+            # calculate golomb parameter
             golombParameter = int(len(longList) / len(shortList))
+
+            # make a golomb search in long list, it returns overall offset
             y = golomb_search(longList, x, golombParameter)
+
             if (verbose):
                 print " return eden overall offset : ", y
+
+            # if elements are equal then append
             if (x == longList[y]):
                 intersectedArray.append(x)
             else:
@@ -47,16 +61,19 @@ class Intersections():
 
     def svs_intersect(self, list_of_input_lists):
 
+        # sort list wrt its length
         listsAreSortedWRTLength = sorted(list_of_input_lists, key=len)
 
         numberOfLists = len(listsAreSortedWRTLength)
 
+        # get shortest list
         shortestList = listsAreSortedWRTLength[0]
+
         intersectedArray = shortestList
 
         for i in range(1, numberOfLists):
-            intersectedArray = self.binary_intersect(
-                [intersectedArray, listsAreSortedWRTLength[i]])
+            # DONE # TODO burada tekrar binary intersect'e giriyor tekrar tekrar liste sort ediliyor.
+            intersectedArray = self.binary_intersect([intersectedArray, listsAreSortedWRTLength[i]], sorrt=False)
 
         return intersectedArray
 
@@ -70,25 +87,36 @@ class Intersections():
             return lst.pop(0)
 
         intersectedArray = []
+
         loil = list_of_input_lists
 
         while (1):
+            # TODO burada her seferinde listeleri sort ediyor.
             listsAreSortedWRTLength = getListsAsSortedWRTLength(loil)
+
+            # if first array is empty return
             if (len(listsAreSortedWRTLength[0]) == 0):
                 return intersectedArray
+
             eliminator = getEliminator(listsAreSortedWRTLength[0])
 
             numberOfLists = len(listsAreSortedWRTLength)
+
             if (verbose):
                 print eliminator
 
             unmatch = False
             for i in range(1, numberOfLists):
-                bool, newList = linearSearch(listsAreSortedWRTLength[i],
-                                             eliminator)
+
+                '''
+                it goes find an exact match or bigger match.
+                if it finds exact match return True and restoflist
+                if it finds bigger match return False and restoflist
+                '''
+                bool, newList = linearSearch(listsAreSortedWRTLength[i],eliminator)
 
                 if (bool):
-                    # keep continue
+                    # replace list and keep continue
                     listsAreSortedWRTLength[i] = newList
                 else:
                     # unmatch case or empty list case
@@ -116,33 +144,38 @@ class Intersections():
 
         # initially take the shortest array as eliminator
         listsAreSortedWRTLength = getListsAsSortedWRTLength(loil)
+
         if (len(listsAreSortedWRTLength[0]) == 0):
             return intersectedArray
+
         eliminator = getEliminator(listsAreSortedWRTLength[0])
         numberOfLists = len(listsAreSortedWRTLength)
 
         kingListIndex = 0
         while (1):
 
-            print eliminator
+            #print eliminator
             unmatch = False
             for i in range(0, numberOfLists):
                 ## eliminatori veren arrayi atla
                 if (kingListIndex == i):
                     continue
 
-                bool, newList = linearSearch(listsAreSortedWRTLength[i],
-                                             eliminator)
+                bool, newList = linearSearch(listsAreSortedWRTLength[i], eliminator)
 
                 if (bool):
                     # keep continue
                     listsAreSortedWRTLength[i] = newList
                 else:
-                    # unmatch case or empty list case
+                    #  empty list case
                     if (len(newList) == 0):
                         # list is empty
                         return intersectedArray
+
+                    # unmatch case
                     else:
+                        # unmatch and list are still full.
+                        # take that list as kinglist
                         listsAreSortedWRTLength[i] = newList
                         eliminator = getEliminator(listsAreSortedWRTLength[i])
                         kingListIndex = i
@@ -158,6 +191,8 @@ class Intersections():
                 kingListIndex = 0
             loil = listsAreSortedWRTLength
 
+
+
     def max_intersect(self, list_of_input_lists):
 
         def getEliminator(lst):
@@ -172,16 +207,22 @@ class Intersections():
 
         eliminatorArrayLength = len(lengthsorted[0])
         x = getEliminator(lengthsorted[0])
+        # start searching from the first list
         startat = 1
 
         while (x):
+
             for i in range(startat, len(lengthsorted)):
                 print startat, x, eliminatorArrayLength
 
+                # if any list is empty go back.
                 if (len(lengthsorted[i]) == 0):
                     return intersectedArray
-                y = golomb_search(lengthsorted[i], x, int(
-                    len(lengthsorted[i]) / eliminatorArrayLength))
+
+                y = golomb_search(lengthsorted[i], x, int(len(lengthsorted[i]) / eliminatorArrayLength))
+
+                # eger golombun buldugu deger xten buyukse bir sonraki eliminatori hala en kucuk olanindan sec
+
                 if (lengthsorted[i][y] > x):
                     x = getEliminator(lengthsorted[0])
                     if (lengthsorted[i][y] > x):

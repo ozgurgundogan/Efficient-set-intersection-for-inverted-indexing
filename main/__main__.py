@@ -19,50 +19,58 @@ def main(args=None):
 
     queries.sort(key=len)
 
-    querylengthCounter = 0
-    for query in queries:
+    querylengthCounter = 1
+    for query in queries[0]:
         if(querylengthCounter < len(query)):
             querylengthCounter = querylengthCounter + 1
         else:
             continue
-        list_of_input = []
+
         lengthOfQuery.append(len(query))
-        for word in query:
-            # check whether word in our dict
-            if word in word_dict.keys():
-                list_of_input.append(load_data(word_dict[word][0], word_dict[word][1]))
 
-        start = time.time()
-        svs_intersection = Intersections(SVSIntersection)
-        svs_intersection.intersect(list_of_input)
-        end = time.time()
+        for tms in range(4):
+            list_of_input = []
 
-        print "svs_intersection " + str(end - start)
-        svs_time.append(end - start)
+            for word in query:
+                # check whether word in our dict
+                if word in word_dict.keys():
+                    list_of_input.append(
+                        load_data(word_dict[word][0], word_dict[word][1]))
 
-        start = time.time()
-        adb_intersection = Intersections(ADBIntersection)
-        adb_intersection.intersect(list_of_input)
-        end = time.time()
+            if(tms==0):
+                # print list_of_input
+                start = time.time()
+                svs_intersection = Intersections(SVSIntersection)
+                interarr = svs_intersection.intersect(list_of_input)
+                print interarr,
+                end = time.time()
+                print "svs_intersection " + str(end - start)
+                svs_time.append(end - start)
+            if (tms == 1):
+                start = time.time()
+                adb_intersection = Intersections(ADBIntersection)
+                interarr = adb_intersection.intersect(list_of_input)
+                print interarr ,
+                end = time.time()
+                print "ADB_intersection " + str(end - start)
+                adb_time.append(end - start)
 
-        print "ADB_intersection " + str(end - start)
-        adb_time.append(end - start)
-
-        start = time.time()
-        seq_intersection = Intersections(SEQIntersection)
-        seq_intersection.intersect(list_of_input)
-        end = time.time()
-
-        print "seq_intersection " + str(end - start)
-        seq_time.append(end - start)
-
-        start = time.time()
-        max_intersect = Intersections(MAXIntersection)
-        max_intersect.intersect(list_of_input)
-        end = time.time()
-
-        print "max_intersect " + str(end - start)
-        max_time.append(end - start)
+            if(tms==2):
+                start = time.time()
+                seq_intersection = Intersections(SEQIntersection)
+                interarr = seq_intersection.intersect(list_of_input)
+                print interarr ,
+                end = time.time()
+                print "seq_intersection " + str(end - start)
+                seq_time.append(end - start)
+            if(tms==3):
+                start = time.time()
+                max_intersect = Intersections(MAXIntersection)
+                interarr = max_intersect.intersect(list_of_input)
+                print interarr ,
+                end = time.time()
+                print "max_intersect " + str(end - start)
+                max_time.append(end - start)
 
 
     plt.plot(lengthOfQuery,svs_time, label="svs_time")
