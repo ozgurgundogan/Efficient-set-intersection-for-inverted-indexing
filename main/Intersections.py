@@ -221,10 +221,11 @@ class Intersections():
 
                 y = golomb_search(lengthsorted[i], x, int(len(lengthsorted[i]) / eliminatorArrayLength))
 
-                # eger golombun buldugu deger xten buyukse bir sonraki eliminatori hala en kucuk olanindan sec
+                # if the value found by golomb bigger than x , then keep smallest array as eliminator generator.
 
                 if (lengthsorted[i][y] > x):
                     x = getEliminator(lengthsorted[0])
+                    # if new eliminator is also less than that value
                     if (lengthsorted[i][y] > x):
                         startat = 0
                         x = lengthsorted[i][y]
