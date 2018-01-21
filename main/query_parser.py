@@ -22,7 +22,7 @@ def parse_queries(concat=False):
 
     ## randomly concat queries
     if(concat):
-        for k in range(400):
+        for k in range(20):
             x = random.sample(range(len(queries)),1)[0]
             y = random.sample(range(len(queries)),1)[0]
 

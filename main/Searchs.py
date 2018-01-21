@@ -46,6 +46,9 @@ def binary_search(array, lengthOfArray, target, verbose=False):
 def golomb_search(L, x, b, currentPosition=0, verbose=False):
     if (verbose):
         print "golomb search ==> arr : ", L, " target : ", x
+
+    if(b==0):
+        b=b+1
     curr = currentPosition
     pos = curr + b
     n = len(L) - 1

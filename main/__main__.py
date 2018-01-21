@@ -19,15 +19,17 @@ def main(args=None):
 
     queries.sort(key=len)
 
-    querylengthCounter = 1
-    for query in queries[0]:
+    querylengthCounter = 0
+    for query in queries:
         if(querylengthCounter < len(query)):
             querylengthCounter = querylengthCounter + 1
         else:
             continue
 
+
         lengthOfQuery.append(len(query))
 
+        print lengthOfQuery
         for tms in range(4):
             list_of_input = []
 
@@ -72,7 +74,7 @@ def main(args=None):
                 print "max_intersect " + str(end - start)
                 max_time.append(end - start)
 
-
+    # return
     plt.plot(lengthOfQuery,svs_time, label="svs_time")
     plt.plot(lengthOfQuery, adb_time, label="adb_time")
     plt.plot(lengthOfQuery, seq_time, label="seq_time")
