@@ -385,6 +385,7 @@ class Intersections():
             else:
                 return None
 
+
         lengthsorted = getListsAsSortedWRTLength(list_of_input_lists)
         intersectedArray = []
 
@@ -420,7 +421,7 @@ class Intersections():
                 # arrayin yeni halinde bizim eleman artik yok
                 lengthsorted[i] = lengthsorted[i][y:]
 
-
+                # print len(lengthsorted[0]),len(lengthsorted[1])
                 if(i==0):
                     if (valfound > x):
                         x = getEliminator(lengthsorted[0], popit=True)
@@ -443,6 +444,23 @@ class Intersections():
                         break
                     elif (valfound < x):
                         return intersectedArray
+                    #eger liste 2 lik ise buraya girmemiz gerekiyor
+                    elif (valfound == x):
+                        if(len(lengthsorted)==2):
+                            if (verbose):
+                                print "found : ", x, " eliminator index ", eliminatorListIndex
+                            intersectedArray.append(x)
+                            # TODO there is a problem here, will we keep get eliminator from the list which previous eliminator is taken or will we get eliminator from first list ?
+
+                            x = getEliminator(lengthsorted[0], popit=True)
+                            startat = 1
+
+                            for i in range(startat, len(lengthsorted)):
+                                dmmy = getEliminator(lengthsorted[i],popit=True)
+
+                            if(verbose):
+                                for i in range(len(lengthsorted)):
+                                    print "arr " , i , lengthsorted[i]
 
                 else:
                     if(valfound!=x):
@@ -454,6 +472,7 @@ class Intersections():
                     else:
 
                         if ((i == len(lengthsorted) - 1)):
+
                             if (verbose):
                                 print "found : ", x, " eliminator index ", eliminatorListIndex
                             intersectedArray.append(x)

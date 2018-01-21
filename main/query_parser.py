@@ -1,7 +1,7 @@
 import re
 import random
 
-def parse_queries(concat=True):
+def parse_queries(concat=False):
     queries = []
     with open("/home/ozgurgundogan/Desktop/Efficient-set-intersection-for-inverted-indexing/data/q-topics-org-SET1.txt") as q_file:
         for line in q_file:
