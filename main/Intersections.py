@@ -194,77 +194,77 @@ class Intersections():
 
 
 
-    def max_intersect(self, list_of_input_lists, verbose=True):
-
-        def getEliminator(lst):
-
-            if (len(lst) > 0):
-                return lst.pop(0)
-            else:
-                return None
-
-        lengthsorted = sorted(list_of_input_lists, key=len)
-        intersectedArray = []
-
-        x = getEliminator(lengthsorted[0])
-        eliminatorListIndex = 0
-        # start searching from the first list
-        startat = 1
-
-        while (x != None):
-
-            if(verbose):
-                print "eliminator" , x , "from" , eliminatorListIndex , "startat list", startat,
-            eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
-
-
-            for i in range(startat, len(lengthsorted)):
-                # print startat, x, eliminatorArrayLength
-
-                # if any list is empty go back.
-                if (len(lengthsorted[i]) == 0):
-                    return intersectedArray
-
-                # golomb search gives equal value or bigger value. if it gives a value less than search item then that list ends.
-                y = golomb_search(lengthsorted[i], x, 1)
-                if (verbose):
-                    print "found y" , lengthsorted[i][y] , "in list" , lengthsorted[i] , "ind" , i
-
-                valfound = lengthsorted[i][y]
-                lengthsorted[i] = lengthsorted[i][y:]
-
-
-                # print x
-                # if the value found by golomb bigger than x , then keep smallest array as eliminator generator.
-                if (valfound > x):
-                    x = getEliminator(lengthsorted[0])
-                    # if new eliminator is also less than that value
-                    if (valfound > x):
-                        startat = 0
-                        x = valfound
-                        # update eliminator list index
-                        eliminatorListIndex = i
-                        # break
-                    else:
-                        # DONT update eliminator index
-                        startat = 1
-
-                    ## if not found in that list , then break it up
-                    break
-
-                # if
-                elif(valfound < x):
-                    return intersectedArray
-                    # x = getEliminator(lengthsorted[0])
-                    # break
-
-                elif ((i == len(lengthsorted) - 1)):
-                    if (verbose):
-                        print "found : " , x
-                    intersectedArray.append(x)
-                    x = getEliminator(lengthsorted[0])
-                    startat = 1
-        return intersectedArray
+    # def max_intersect(self, list_of_input_lists, verbose=True):
+    #
+    #     def getEliminator(lst):
+    #
+    #         if (len(lst) > 0):
+    #             return lst.pop(0)
+    #         else:
+    #             return None
+    #
+    #     lengthsorted = sorted(list_of_input_lists, key=len)
+    #     intersectedArray = []
+    #
+    #     x = getEliminator(lengthsorted[0])
+    #     eliminatorListIndex = 0
+    #     # start searching from the first list
+    #     startat = 1
+    #
+    #     while (x != None):
+    #
+    #         if(verbose):
+    #             print "eliminator" , x , "from" , eliminatorListIndex , "startat list", startat,
+    #         eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
+    #
+    #
+    #         for i in range(startat, len(lengthsorted)):
+    #             # print startat, x, eliminatorArrayLength
+    #
+    #             # if any list is empty go back.
+    #             if (len(lengthsorted[i]) == 0):
+    #                 return intersectedArray
+    #
+    #             # golomb search gives equal value or bigger value. if it gives a value less than search item then that list ends.
+    #             y = golomb_search(lengthsorted[i], x, 1)
+    #             if (verbose):
+    #                 print "found y" , lengthsorted[i][y] , "in list" , lengthsorted[i] , "ind" , i
+    #
+    #             valfound = lengthsorted[i][y]
+    #             lengthsorted[i] = lengthsorted[i][y:]
+    #
+    #
+    #             # print x
+    #             # if the value found by golomb bigger than x , then keep smallest array as eliminator generator.
+    #             if (valfound > x):
+    #                 x = getEliminator(lengthsorted[eliminatorListIndex])
+    #                 # if new eliminator is also less than that value
+    #                 if (valfound > x):
+    #                     startat = 0
+    #                     x = valfound
+    #                     # update eliminator list index
+    #                     eliminatorListIndex = i
+    #                     # break
+    #                 else:
+    #                     # DONT update eliminator index
+    #                     startat = 1
+    #
+    #                 ## if not found in that list , then break it up
+    #                 break
+    #
+    #             # if
+    #             elif(valfound < x):
+    #                 return intersectedArray
+    #                 # x = getEliminator(lengthsorted[0])
+    #                 # break
+    #
+    #             elif ((i == len(lengthsorted) - 1)):
+    #                 if (verbose):
+    #                     print "found : " , x
+    #                 intersectedArray.append(x)
+    #                 x = getEliminator(lengthsorted[0])
+    #                 startat = 1
+    #     return intersectedArray
 
 
     #
@@ -370,99 +370,104 @@ class Intersections():
     #     return intersectedArray
     #
 
-    # def max_intersect(self, list_of_input_lists, verbose=True):
-    #
-    #     def getListsAsSortedWRTLength(listsOfLists):
-    #         return sorted(listsOfLists, key=len)
-    #
-    #     def getEliminator(lst, popit=True):
-    #
-    #         if (len(lst) > 0):
-    #             if(popit):
-    #                 return lst.pop(0)
-    #             else:
-    #                 return lst[0]
-    #         else:
-    #             return None
-    #
-    #     lengthsorted = getListsAsSortedWRTLength(list_of_input_lists)
-    #     intersectedArray = []
-    #
-    #     # init values
-    #     x = getEliminator(lengthsorted[0])
-    #     eliminatorListIndex = 0
-    #     # start searching from the first list initially
-    #     startat = 1
-    #     eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
-    #
-    #     while (x != None):
-    #
-    #         if(verbose):
-    #             print "eliminator" , x , "startat list", startat,
-    #
-    #         for i in range(startat, len(lengthsorted)):
-    #             # print startat, x, eliminatorArrayLength
-    #
-    #             # if any list is empty go back.
-    #             if (len(lengthsorted[i]) == 0):
-    #                 return intersectedArray
-    #
-    #             # golomb search gives equal value or bigger value. if it gives a value less than search item then that list ends.
-    #             # y = golomb_search(lengthsorted[i], x, int(len(lengthsorted[i]) / eliminatorArrayLength))
-    #             y = golomb_search(lengthsorted[i], x, 1)
-    #
-    #             if (verbose):
-    #                 print "found y" , lengthsorted[i][y] , "in list" , lengthsorted[i]
-    #
-    #             valfound = lengthsorted[i][y]
-    #
-    #             # remove previous value of the array,
-    #             # arrayin yeni halinde bizim eleman artik yok
-    #             lengthsorted[i] = lengthsorted[i][y:]
-    #
-    #
-    #             if(i==0):
-    #                 if (valfound > x):
-    #                     x = getEliminator(lengthsorted[0], popit=True)
-    #                     startat = 1
-    #                 elif (valfound < x):
-    #                     return intersectedArray
-    #
-    #
-    #             elif(i==1):
-    #                 if (valfound > x):
-    #                     x = getEliminator(lengthsorted[0], popit=False)
-    #                     if (valfound > x):
-    #                         dummy = getEliminator(lengthsorted[0], popit=True)
-    #                         startat = 0
-    #                         x = valfound
-    #                     else:
-    #                         x = getEliminator(lengthsorted[0], popit=True)
-    #                         startat = 0
-    #
-    #                     break
-    #                 elif (valfound < x):
-    #                     return intersectedArray
-    #
-    #             else:
-    #                 if(valfound!=x):
-    #                     # not found rest list
-    #                     # get a new eliminator from 0 and start with 1
-    #                     x = getEliminator(lengthsorted[0], popit=True)
-    #                     startat = 1
-    #                 else:
-    #
-    #                     if ((i == len(lengthsorted) - 1)):
-    #                         if (verbose):
-    #                             print "found : ", x, " eliminator index ", eliminatorListIndex
-    #                         intersectedArray.append(x)
-    #                         # TODO there is a problem here, will we keep get eliminator from the list which previous eliminator is taken or will we get eliminator from first list ?
-    #
-    #                         x = getEliminator(lengthsorted[eliminatorListIndex], popit=True)
-    #                         startat = 1
-    #
-    #
-    #
-    #     # eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
-    #
-    #     return intersectedArray
+    def max_intersect(self, list_of_input_lists, verbose=False):
+
+        def getListsAsSortedWRTLength(listsOfLists):
+            return sorted(listsOfLists, key=len)
+
+        def getEliminator(lst, popit=True):
+
+            if (len(lst) > 0):
+                if(popit):
+                    return lst.pop(0)
+                else:
+                    return lst[0]
+            else:
+                return None
+
+        lengthsorted = getListsAsSortedWRTLength(list_of_input_lists)
+        intersectedArray = []
+
+        # init values
+        x = getEliminator(lengthsorted[0])
+        eliminatorListIndex = 0
+        # start searching from the first list initially
+        startat = 1
+        eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
+
+        while (x != None):
+
+            if(verbose):
+                print "eliminator" , x , "startat list", startat,
+
+            for i in range(startat, len(lengthsorted)):
+                # print startat, x, eliminatorArrayLength
+
+                # if any list is empty go back.
+                if (len(lengthsorted[i]) == 0):
+                    return intersectedArray
+
+                # golomb search gives equal value or bigger value. if it gives a value less than search item then that list ends.
+                # y = golomb_search(lengthsorted[i], x, int(len(lengthsorted[i]) / eliminatorArrayLength))
+                y = golomb_search(lengthsorted[i], x, 1)
+
+                if (verbose):
+                    print "found y" , lengthsorted[i][y] , "in list" , lengthsorted[i]
+
+                valfound = lengthsorted[i][y]
+
+                # remove previous value of the array,
+                # arrayin yeni halinde bizim eleman artik yok
+                lengthsorted[i] = lengthsorted[i][y:]
+
+
+                if(i==0):
+                    if (valfound > x):
+                        x = getEliminator(lengthsorted[0], popit=True)
+                        startat = 1
+                    elif (valfound < x):
+                        return intersectedArray
+
+
+                elif(i==1):
+                    if (valfound > x):
+                        x = getEliminator(lengthsorted[0], popit=False)
+                        if (valfound > x):
+                            dummy = getEliminator(lengthsorted[0], popit=True)
+                            startat = 0
+                            x = valfound
+                        else:
+                            x = getEliminator(lengthsorted[0], popit=True)
+                            startat = 1
+
+                        break
+                    elif (valfound < x):
+                        return intersectedArray
+
+                else:
+                    if(valfound!=x):
+                        # not found rest list
+                        # get a new eliminator from 0 and start with 1
+                        x = getEliminator(lengthsorted[0], popit=True)
+                        startat = 1
+                        break
+                    else:
+
+                        if ((i == len(lengthsorted) - 1)):
+                            if (verbose):
+                                print "found : ", x, " eliminator index ", eliminatorListIndex
+                            intersectedArray.append(x)
+                            # TODO there is a problem here, will we keep get eliminator from the list which previous eliminator is taken or will we get eliminator from first list ?
+
+                            x = getEliminator(lengthsorted[0], popit=True)
+                            startat = 1
+
+                            for i in range(startat, len(lengthsorted)):
+                                dmmy = getEliminator(lengthsorted[i],popit=True)
+
+                            if(verbose):
+                                for i in range(len(lengthsorted)):
+                                    print "arr " , i , lengthsorted[i]
+        # eliminatorArrayLength = len(lengthsorted[eliminatorListIndex])
+
+        return intersectedArray

@@ -1,7 +1,7 @@
 import re
 import random
 
-def parse_queries(concat=False):
+def parse_queries(concat=True):
     queries = []
     with open("/home/ozgurgundogan/Desktop/Efficient-set-intersection-for-inverted-indexing/data/q-topics-org-SET1.txt") as q_file:
         for line in q_file:
@@ -22,7 +22,7 @@ def parse_queries(concat=False):
 
     ## randomly concat queries
     if(concat):
-        for k in range(20):
+        for k in range(50):
             x = random.sample(range(len(queries)),1)[0]
             y = random.sample(range(len(queries)),1)[0]
 

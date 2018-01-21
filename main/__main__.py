@@ -19,7 +19,7 @@ def main(args=None):
 
     queries.sort(key=len)
 
-    querylengthCounter = 0
+    querylengthCounter = 1
     for query in queries:
         if(querylengthCounter < len(query)):
             querylengthCounter = querylengthCounter + 1
@@ -39,6 +39,8 @@ def main(args=None):
                     list_of_input.append(
                         load_data(word_dict[word][0], word_dict[word][1]))
 
+
+            # print list_of_input
             if(tms==0):
                 # print list_of_input
                 start = time.time()
