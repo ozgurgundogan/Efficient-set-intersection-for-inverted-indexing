@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad27e98-8a40-42af-b730-84ac74183cf2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.pdf" afterPath="$PROJECT_DIR$/report.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.synctex.gz" afterPath="$PROJECT_DIR$/report.synctex.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Efficient-set-intersection-for-inverted-indexing.iml" afterPath="$PROJECT_DIR$/.idea/Efficient-set-intersection-for-inverted-indexing.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/Intersections.py" afterPath="$PROJECT_DIR$/main/Intersections.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/Searchs.py" afterPath="$PROJECT_DIR$/main/Searchs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/__main__.py" afterPath="$PROJECT_DIR$/main/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/data_reader.py" afterPath="$PROJECT_DIR$/main/data_reader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/query_parser.py" afterPath="$PROJECT_DIR$/main/query_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.aux" afterPath="$PROJECT_DIR$/report.aux" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.log" afterPath="$PROJECT_DIR$/report.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.tex" afterPath="$PROJECT_DIR$/report.tex" />
     </list>
     <ignored path="Efficient-set-intersection-for-inverted-indexing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,115 +26,62 @@
     <favorites_list name="Efficient-set-intersection-for-inverted-indexing" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8524857">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Intersections.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/Intersections.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="263">
-                  <caret line="173" column="36" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="36" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="__main__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/__main__.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#107#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Searchs.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/Searchs.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-105">
-                  <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_.png" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/result_.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_2to5.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/result_2to5.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_50.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/result_50.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_normal.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/result_normal.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="query_parser.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/query_parser.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#9#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_100.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/result_100.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="data_reader.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/data_reader.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="maxtest.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/tests/maxtest.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Intersections.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/Intersections.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="173" column="36" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__main__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/__main__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#107#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Searchs.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/Searchs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="query_parser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/query_parser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_reader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/data_reader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -552,9 +486,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1223176" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1223176" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22889115" sideWeight="0.23161969" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -891,14 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/Searchs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_100.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -922,6 +848,14 @@
     <entry file="file://$PROJECT_DIR$/result_.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/Searchs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
