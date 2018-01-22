@@ -1,6 +1,8 @@
 \documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 
-
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
 \usepackage[english]{babel} % English language/hyphenation
@@ -92,7 +94,8 @@ emphstyle={\color{self}\slshape},
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Ozgur GUNDOGAN} % Your name
+\author{Ozgur GUNDOGAN \\ Burak Sefa SERT} % Your name
+
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -151,7 +154,44 @@ In sequential holistic intersection (seq) , algorithm uses as the next eliminato
 Holistic methods may have a memory access pattern that is less localized than do svs methods, because all of the sets are processed concurrently. To diminish this risk, author of the paper propose a further alternative. The eliminator is initially drawn from the smallest set. When a mismatch occurs, the next eliminator is the larger of the mismatched value and the successor from the smallest set. Processing starts in $S_{2}$ if the eliminator is again taken from $S_{1}$, otherwise processing begins in $S_{1}$. The intuition behind this approach is two-fold. The first is that, without any other information, the best eliminator will be in the smallest set. The second intuition is that, having discovered a bigger than anticipated jump in one of the sets, that value should be tested against the first set, to see if additional items can be discarded.
 
 \newpage
+\section{DATASET}
+
+
+
+\newpage
+\section{EXPERIMENTS AND RESULTS}
+Throughout this project, we have implemented four methods which are small versus small, adaptive holistic intersection, sequential holistic intersection, max successor intersection. As search function, we used golomb search in max successor intersection algorithm and binary search in the rest of algorithms. Since our dataset consists queries upto 5 words in a query,  we needed to concatenate queries randomly to generate queries more than 5 words. Thanks to that, we compared methods' efficiencies with respect to query length in a better way. As can be seen in Figure \ref{fig:result_normal}, small versus small is the worst algorithm and adaptive holistic intersection algorithm is the best one in average. It can be said that the performance of the algorithms are highly query dependent if we compare query length 4 and 5. Result in query length 4 and 5 show us the adaptive holistic intersection algorithm is better than max successor when query length is 4 but worse than max successor when query length is 5. Also, if we examine result of any of algorithms in \ref{fig:result_normal}, we can see that algorithms performance do not decrease when query length increases as expected. Actually it makes sense if we think about one word query which has a long posting list and three words query which all words have a short posting list.
+ 
+
+
+\begin{figure}[H]
+   \includegraphics[width=\textwidth]{result_}
+  \caption{ Original queries upto 5 words in a query}
+  \label{fig:result_normal}
+\end{figure}
+
+
+All observations in \ref{fig:result_normal} which mentioned above are still valid for \ref{fig:result_50}. In this graph, we easily observe that some queries consume so much time with respect to others.
+
+
+\begin{figure}[H]
+   \includegraphics[width=\textwidth]{result_50}
+  \caption{ Concatenated queries upto 10 words in a query}
+  \label{fig:result_50}
+\end{figure}
+
+
+
+\section{CONCLUSION}
+
+
+
+\newpage
 \section{SOURCE CODE}
+
+All source code can be found under  \href{https://github.com/ozgurgundogan/Efficient-set-intersection-for-inverted-indexing}{Github Repository.}
+
+
 \subsection{Intersection Algorithms Implementation}
 \lstinputlisting[language=Python]{main/Intersections.py}
 

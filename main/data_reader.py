@@ -4,7 +4,7 @@ from struct import unpack
 def read_wordlist():
     word_dict = {}
     start = 0
-    with open("/home/ozgurgundogan/Desktop/Efficient-set-intersection-for-inverted-indexing/data/wordlist.txt", 'r') as word_list:
+    with open("/Users/iafs/Desktop/GitHub/Efficient-set-intersection-for-inverted-indexing/data/wordlist.txt", 'r') as word_list:
         for line in word_list:
             line = line.split(" ")[:2]
             word = line[0]
@@ -18,9 +18,9 @@ def read_wordlist():
 
 def load_data(start, end):
     ret = []
-    postings = open("/home/ozgurgundogan/Desktop/Efficient-set-intersection-for-inverted-indexing/data/entry.bin", 'rb')
+    postings = open("/Users/iafs/Downloads/entry.bin", 'rb')
     pointer = start
-    while pointer <= end:
+    while pointer < end:
         postings.seek(pointer, 0)
         lll = unpack('<i', postings.read(4))
         ret.append(lll[0])

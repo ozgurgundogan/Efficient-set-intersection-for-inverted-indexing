@@ -18,6 +18,20 @@ def linearSearch(lst, target):
     return False, []
 
 
+def binary_search2(array, start, end, target, verbose=False):
+    if start > end:
+        return False,array
+    middle = (start+end)/2
+
+    if array[middle] == target:
+        return True, array[middle:]
+    elif array[middle] < target:
+        return binary_search2(array, middle + 1, end, target)
+    else:
+        return binary_search2(array,start, middle-1,target)
+
+
+
 def binary_search(array, lengthOfArray, target, verbose=False):
     if (verbose):
         print " in binary search array : ", array, " length of array ", lengthOfArray, " target ", target

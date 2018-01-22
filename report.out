@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
+\BOOKMARK [1][-]{section.2}{ALGORITHMS FOR EFFICIENT F-SEARCH}{}% 2
+\BOOKMARK [1][-]{section.3}{Intersection Methods}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Binary Intersection of Ordered Sets}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Small versus Small}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Adaptive Holistic Intersection}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Sequential Holistic Intersection}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Max Successor Intersection}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{DATASET}{}% 9
+\BOOKMARK [1][-]{section.5}{EXPERIMENTS AND RESULTS}{}% 10
+\BOOKMARK [1][-]{section.6}{CONCLUSION}{}% 11
+\BOOKMARK [1][-]{section.7}{SOURCE CODE}{}% 12
+\BOOKMARK [2][-]{subsection.7.1}{Intersection Algorithms Implementation}{section.7}% 13
+\BOOKMARK [2][-]{subsection.7.2}{Search Algorithms Implementation}{section.7}% 14
