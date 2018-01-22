@@ -155,7 +155,7 @@ Holistic methods may have a memory access pattern that is less localized than do
 
 \newpage
 \section{DATASET}
-
+The dataset we have used includes more than 500000 words and 41000000 posting list entry. It is quite big, therefore instead of importing the whole list into memory we have lazy loaded the posting list data as needed. Apart from that, query that we have used is extracted from as title of query topics, with punctuation omitted. The remaining part is split by whitespace and each word is AND'ed.
 
 
 \newpage
