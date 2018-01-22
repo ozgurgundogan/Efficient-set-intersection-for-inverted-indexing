@@ -129,6 +129,7 @@ Golomb searching also can be used.Progressively, search proceeds is similar to e
 
 Golomb and binary search are implemented in python. It can be seen here.
 
+\newpage
 \section{Intersection Methods}
 
 \subsection{Binary Intersection of Ordered Sets}
@@ -153,10 +154,10 @@ In sequential holistic intersection (seq) , algorithm uses as the next eliminato
 
 Holistic methods may have a memory access pattern that is less localized than do svs methods, because all of the sets are processed concurrently. To diminish this risk, author of the paper propose a further alternative. The eliminator is initially drawn from the smallest set. When a mismatch occurs, the next eliminator is the larger of the mismatched value and the successor from the smallest set. Processing starts in $S_{2}$ if the eliminator is again taken from $S_{1}$, otherwise processing begins in $S_{1}$. The intuition behind this approach is two-fold. The first is that, without any other information, the best eliminator will be in the smallest set. The second intuition is that, having discovered a bigger than anticipated jump in one of the sets, that value should be tested against the first set, to see if additional items can be discarded.
 
-\newpage
+
 \section{DATASET}
 
-
+The dataset we have used includes more than 500,000 words and 41,000,000 posting list entry. It is quite big, therefore instead of importing the whole list into memory we have lazy loaded the posting list data as needed. Apart from that, query that we have used is extracted from as title of query topics, with punctuation omitted. The remaining part is split by whitespace and each word in query is AND'ed.
 
 \newpage
 \section{EXPERIMENTS AND RESULTS}
